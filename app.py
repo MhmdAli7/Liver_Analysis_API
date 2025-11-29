@@ -103,7 +103,7 @@ def segment_liver():
         with torch.no_grad():
             output = model(input_tensor)
             prob = torch.sigmoid(output)
-            mask = (prob > 0.3).float().cpu().numpy().squeeze()
+            mask = (prob > 0.2).float().cpu().numpy().squeeze()
         original_rgb = cv2.cvtColor(original_img, cv2.COLOR_GRAY2BGR)
         green_layer = np.zeros_like(original_rgb)
         green_layer[:, :, 1] = (mask * 255).astype(np.uint8)
